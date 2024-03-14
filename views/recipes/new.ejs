@@ -1,0 +1,48 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+  <h2>Enter a New Recipe</h2>
+  <form action="/recipes" method="POST" class="recipe-form">
+    <div class="form-group">
+      <label for="recipeName">Recipe Name:</label>
+      <input type="text" name="name" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select id="category" name="category" class="form-control" required>
+        <option value="" disabled selected>Select category</option>
+        <option value="Greek">American</option>
+        <option value="Chinese">Chinese</option>
+        <option value="French">French</option>
+        <option value="Greek">German</option>
+        <option value="Greek">Greek</option>
+        <option value="Indian">Indian</option>
+        <option value="Italian">Italian</option>
+        <option value="Japanese">Japanese</option>
+        <option value="Mexican">Mexican</option>
+        <option value="Spanish">Spanish</option>
+        <option value="Thai">Thai</option>
+        <option value="Vietnamese">Vietnamese</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="ingredients">Ingredients:</label>
+      <textarea id="ingredients" name="ingredients" class="form-control" rows="4" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="directions">Directions:</label>
+      <textarea id="directions" name="directions" class="form-control" rows="4" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="prepTime">Prep Time (minutes):</label>
+      <input type="number" id="prepTime" name="prepTime" class="form-control" required>
+    </div>
+    <div class="form-group">
+      <label for="cookTime">Cook Time (minutes):</label>
+      <input type="number" id="cookTime" name="cookTime" class="form-control" required>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<%- include('../partials/footer') %>
