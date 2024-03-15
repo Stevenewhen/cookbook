@@ -2,8 +2,16 @@ const Recipe = require('../models/recipe');
 
 module.exports = {
     new: newRecipe,
-    create
+    create,
+    index
 };
+
+async function index(req, res) {
+    const recipes = await Recipe.find({})
+    res.render('recipes/index', {
+        recipes
+    })
+}
 
 async function create(req, res) {
     Recipe.create(req.body)

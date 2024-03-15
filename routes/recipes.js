@@ -7,6 +7,9 @@ var recipesCtrl = require('../controllers/recipes');
 //   res.send('respond with a resource');
 // });
 
+//Get /recipes
+router.get('/', recipesCtrl.index)
+
 //GET route to /recipes/new
 router.get('/new', recipesCtrl.new)
 
