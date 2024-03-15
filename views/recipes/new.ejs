@@ -4,12 +4,12 @@
   <h2>Enter a New Recipe</h2>
   <form action="/recipes" method="POST" class="recipe-form">
     <div class="form-group">
-      <label for="recipeName">Recipe Name:</label>
+      <label>Recipe Name:</label>
       <input type="text" name="name" class="form-control" required>
     </div>
     <div class="form-group">
-      <label for="category">Category:</label>
-      <select id="category" name="category" class="form-control" required>
+      <label>Category:</label>
+      <select name="category" class="form-control" required>
         <option value="" disabled selected>Select category</option>
         <option value="Greek">American</option>
         <option value="Chinese">Chinese</option>
@@ -26,21 +26,26 @@
       </select>
     </div>
     <div class="form-group">
-      <label for="ingredients">Ingredients:</label>
-      <textarea id="ingredients" name="ingredients" class="form-control" rows="4" required></textarea>
+      <label>Description</label>
+      <textarea name="description" class="form-control" rows="1" maxlength="280" required></textarea>
     </div>
     <div class="form-group">
-      <label for="directions">Directions:</label>
-      <textarea id="directions" name="directions" class="form-control" rows="4" required></textarea>
+      <label>Ingredients:</label>
+      <textarea name="ingredients" class="form-control" rows="4" required></textarea>
     </div>
     <div class="form-group">
-      <label for="prepTime">Prep Time (minutes):</label>
-      <input type="number" id="prepTime" name="prepTime" class="form-control" required>
+      <label>Directions:</label>
+      <textarea  name="directions" class="form-control" rows="4" required></textarea>
     </div>
     <div class="form-group">
-      <label for="cookTime">Cook Time (minutes):</label>
-      <input type="number" id="cookTime" name="cookTime" class="form-control" required>
+      <label>Prep Time (minutes):</label>
+      <input type="number" name="prepTime" class="form-control" required>
     </div>
+    <div class="form-group">
+      <label>Cook Time (minutes):</label>
+      <input type="number" name="cookTime" class="form-control" required>
+    </div>
+      <br><br>
     <button type="submit">Submit</button>
   </form>
 </div>

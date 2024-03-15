@@ -1,19 +1,28 @@
 <%- include('../partials/header') %>
 
-<h2>Recipe List</h2>
-<table>
-    <thead>
-        <tr>
-            <th>Name</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% recipes.forEach(function(r) { %>
+<div class="container">
+    <h2>Recipe List</h2>
+    <table>
+        <thead>
             <tr>
-            <td><%= r.name %></td>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Total Cook Time</th>
             </tr>
-        <% }) %>
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            <% recipes.forEach(function(r) { %>
+           
+                    <tr>
+                        <td><a href="/recipes/<%= r._id %>"><%= r.name %></a></td>
+                        <td><%= r.description %></td>
+                        <% let totalCookTime = r.prepTime + r.cookTime %>
+                        <td><%= totalCookTime %> mins</td>
+   
+                    </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
 
 <%- include('../partials/footer') %>

@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Helvetica+Neue&display=swap');
+
 body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 nav {
   background-color: #f6b831;
   text-align: center;
@@ -25,16 +27,62 @@ nav ul li a {
   border-radius: 5px;
 }
 
+a {
+  color: #f6b831;
+  text-decoration: none;
+}
+
+a:hover {
+  background-color: #f6b831;
+  color: white;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
 nav ul li a:hover {
   background-color: #f0f0f0;
   color: black;
+}
+
+tr {
+  text-align: center;
+}
+
+tr:nth-child(even){
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #b35d00;
+  color: white;
+}
+
+
+table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: #f6b831;
+  color: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+td {
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: calc(100% / 3);
 }
 
 .logo img {
   max-width: 320px;
 }
 
-container {
+.container {
   max-width: 600px;
   margin: 0 auto;
   padding: 20px;
@@ -79,3 +127,4 @@ button {
 button:hover {
   background-color: #b35d00;
 }
+

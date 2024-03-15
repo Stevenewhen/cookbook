@@ -7,14 +7,17 @@ var recipesCtrl = require('../controllers/recipes');
 //   res.send('respond with a resource');
 // });
 
-//Get /recipes
-router.get('/', recipesCtrl.index)
+// Get /recipes
+router.get('/', recipesCtrl.index);
 
-//GET route to /recipes/new
-router.get('/new', recipesCtrl.new)
+// GET route to /recipes/new (define this before the route for /:id)
+router.get('/new', recipesCtrl.new);
 
-//Post route to /recipes
-router.post('/', recipesCtrl.create)
+// GET /recipe/:id
+router.get('/:id', recipesCtrl.show);
+
+// Post route to /recipes
+router.post('/', recipesCtrl.create);
 
 
 

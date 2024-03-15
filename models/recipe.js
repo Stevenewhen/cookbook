@@ -12,6 +12,11 @@ const recipeSchema = new Schema({
     },
     category: {
         type: String,
+        required: true,
+        enum: ['American', 'Chinese', 'French', 'German', 'Greek', 'Indian', 'Italian', 'Japanese', 'Mexican', 'Spanish', 'Thai', 'Vietnamese']
+    },
+    description: {
+        type: String,
         required: true
     },
     ingredients: {
@@ -29,7 +34,7 @@ const recipeSchema = new Schema({
     cookTime: {
         type: Number,
         required: true
-    }
+    },
     }, {
   timestamps: true
 });
