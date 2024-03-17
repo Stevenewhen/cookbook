@@ -5,23 +5,29 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cookbook</title>
   <link rel='stylesheet' href='/stylesheets/style.css'/>
-  <link rel="icon" href="favicon.png" type="image/x-icon">
+  <link rel="icon" href="/images/favicon.png" type="image/x-icon">
 </head>
 <body>
   <header>
     <div class="header-content">
       <div class="logo">
-        <img src="/images/cookbooklogo.png" alt="Cookbook Logo">
+        <a href="/recipes">
+        <img src="/images/cookbooklogo.png">
+      </a>
       </div>
     </div>
   </header>
   <nav>
     <ul>
-      <li><a href="/">Home</a></li>
-      <li><a href="/recipes/new">New Recipe</a></li>
-      <li><a href="#">My Cookbook</a></li>
-      <li><a href="/recipes">Recipe List</a></li>
+      <li><a href="/recipes" <%- title === 'All Recipes' ? 'class="active"' : '' %>>Recipe List</a></li>
+      <% if (user) { %>
+        <li><a href="/recipes/new" <%- title === 'Add Recipe' ? 'class="active"' : '' %>>Add Recipe</a></li>
+        <li><a href="/logout">Logout</a></li>
+      <% } else { %>
+        <li><a href="/auth/google" class="login">Sign In</a></li>
+      <% } %>
     </ul>
   </nav>
 </body>
 </html>
+

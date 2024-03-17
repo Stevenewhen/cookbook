@@ -10,16 +10,17 @@ module.exports = {
 async function show(req, res) {
     try {
         const recipe = await Recipe.findById(req.params.id);
-        res.render('recipes/show', { recipe });
+        res.render('recipes/show', { recipe, title: 'Recipe' });
     } catch (err) {
         console.error(err);
-
     }
 }
 
 async function index(req, res) {
     const recipes = await Recipe.find({})
-    res.render('recipes/index', { recipes })
+    res.render('recipes/index', { 
+        recipes,
+        title: 'Recipe List' })
 }
 
 async function create(req, res) {
@@ -37,6 +38,6 @@ async function create(req, res) {
 function newRecipe(req, res) {
     const newRecipe = new Recipe();
     console.log(newRecipe)
-    res.render('recipes/new', {errorMsg: ''});
+    res.render('recipes/new', {errorMsg: '', title: 'Add Recipe'});
 }
 

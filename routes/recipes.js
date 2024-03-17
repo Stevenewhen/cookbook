@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var recipesCtrl = require('../controllers/recipes');
+var ensureLoggedIn = require('../config/ensureLoggedIn')
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -11,13 +12,13 @@ var recipesCtrl = require('../controllers/recipes');
 router.get('/', recipesCtrl.index);
 
 // GET route to /recipes/new (define this before the route for /:id)
-router.get('/new', recipesCtrl.new);
+router.get('/new', ensureLoggedIn, recipesCtrl.new);
 
 // GET /recipe/:id
 router.get('/:id', recipesCtrl.show);
 
 // Post route to /recipes
-router.post('/', recipesCtrl.create);
+router.post('/', ensureLoggedIn, recipesCtrl.create);
 
 
 

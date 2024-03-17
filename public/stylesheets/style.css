@@ -2,17 +2,24 @@
 
 body {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  grid-template-rows: 50px 1fr;
+  grid-template-areas: 
+    "nav"
+    "main"
 }
 
 nav {
   background-color: #f6b831;
   text-align: center;
   font-family: 'Helvetica Neue', Arial, sans-serif;
+
 }
 
 nav ul {
   list-style-type: none;
   padding: 0;
+  display: flex;
+  justify-content: flex-end;
 }
 
 nav ul li {
@@ -25,20 +32,12 @@ nav ul li a {
   color: white;
   padding: 5px 10px;
   border-radius: 5px;
+  margin-left: auto;
 }
-
 a {
-  color: #f6b831;
   text-decoration: none;
+  color: #f6b831;
 }
-
-a:hover {
-  background-color: #f6b831;
-  color: white;
-  padding: 5px 5px;
-  border-radius: 5px;
-}
-
 nav ul li a:hover {
   background-color: #f0f0f0;
   color: black;
@@ -54,9 +53,7 @@ tr:nth-child(even){
 
 tr:hover {
   background-color: #b35d00;
-  color: white;
 }
-
 
 table {
   width: 100%;
@@ -82,6 +79,9 @@ td {
   max-width: 320px;
 }
 
+.logo a:hover {
+  background-color: white;
+}
 .container {
   max-width: 600px;
   margin: 0 auto;
@@ -94,9 +94,6 @@ td {
   border-radius: 5px;
 }
 
-.form-group {
-  margin-bottom: 20px;
-}
 
 label {
   font-weight: bold;
@@ -127,4 +124,3 @@ button {
 button:hover {
   background-color: #b35d00;
 }
-
