@@ -4,8 +4,21 @@ module.exports = {
     new: newRecipe,
     create,
     index,
-    show
+    show,
+    delete: deleteRecipe
 };
+
+async function deleteRecipe(req, res) {
+    try {
+        await Recipe.findByIdAndDelete(req.params.id);
+        res.redirect('/recipes');
+    } catch (err) {
+        console.error(err);
+        res.redirect('/recipes'); // Redirect to recipe list page on error
+    }
+}
+
+
 
 async function show(req, res) {
     try {
@@ -24,6 +37,9 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+    req.body.user = req.user._id;
+    req.body.userName = req.user.name;
+    req.body.userAvatar = req.user.avatar;
     try {
         await Recipe.create(req.body);
         res.redirect('/recipes');

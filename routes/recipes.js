@@ -8,6 +8,9 @@ var ensureLoggedIn = require('../config/ensureLoggedIn')
 //   res.send('respond with a resource');
 // });
 
+router.delete('/:id', ensureLoggedIn, recipesCtrl.delete)
+
+
 // Get /recipes
 router.get('/', recipesCtrl.index);
 

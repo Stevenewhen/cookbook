@@ -18,7 +18,11 @@ const reviewSchema = new Schema({
       required: true
     },
     userName: String,
-    userAvatar: String
+    userAvatar: String,
+    date: {
+      type: Date,
+      default: Date.now
+    },
   }, {
     timestamps: true
   });
@@ -29,6 +33,14 @@ const recipeSchema = new Schema({
     name: {
         type: String,
         required: true
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User',
+      required: true
+    },
+    image: {
+      type: String
     },
     date: {
         type: Date,
