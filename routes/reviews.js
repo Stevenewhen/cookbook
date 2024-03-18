@@ -1,11 +1,11 @@
 var express = require('express');
 var router = express.Router();
-var recipesCtrl = require('../controllers/recipes');
+var reviewsCtrl = require('../controllers/reviews');
 var ensureLoggedIn = require('../config/ensureLoggedIn')
 
 
 router.post('/recipes/:id/reviews', ensureLoggedIn, reviewsCtrl.create);
 
-router.delete('/recipes/:id', ensureLoggedIn, reviewsCtrl.delete);
+router.delete('/reviews/:id', ensureLoggedIn, reviewsCtrl.delete);
 
 module.exports = router;

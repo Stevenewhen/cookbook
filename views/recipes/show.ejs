@@ -38,25 +38,26 @@
       <p><%= recipe.cookTime %></p>
       <div>
         <h3>Reviews:</h3>
-        <form id="add-review-form" method="POST" action="/recipes/<%= recipe._id %>/reviews">
-          <textarea name="content" placeholder="Write your review here" style="height: auto; overflow-y: hidden;" rows="1"></textarea>
-          <button type="submit">Submit Review</button>
-        </form>
-        <% recipe.reviews.forEach(function(r) { %>
+      <form id="add-review-form" method="POST" action="/recipes/<%= recipe._id %>/reviews">
+        <textarea name="content" placeholder="Write your review here" rows="4" cols="50"></textarea>
+      </form>
+      <button form="add-review-form" type="submit">Review</button>
+        <% recipe.reviews.forEach(function(rr) { %>
           <div class="review-card">
             <div class="review-user">
-              <img alt="avatar" src="<%= r.userAvatar %>" referrerpolicy="no-referrer">
-              <span><%= r.userName %></span>
+              <img alt="avatar" src="<%= rr.userAvatar %>" referrerpolicy="no-referrer">
+              <span><%= rr.userName %></span>
             </div>
             <div class="review-content">
-              <p><%= r.content %></p>
-              <span class="review-date"><%= r.createdAt.toLocaleDateString() %></span>
+              <p><%= rr.content %></p>
+              <% if (user?._id.equals(rr.user)) { %>
+                <form action="/reviews/<%= rr._id %>?_method=DELETE" method="POST">
+                  <button type="submit">Delete</button>
+                </form>
+              <% } %>
             </div>
           </div>
         <% }); %>
       </div>
     </div>
-  </div>
-</section>
-
-<%- include('../partials/footer') %>
+  </section>

@@ -6,15 +6,12 @@ module.exports = {
 }
 
 async function deleteReview(req, res) {
-    const recipe = await Recipe.findOne({
-        'reviews._id': req.params.id,
-        'reviews.user': req.user._id
-    })
+    const recipe = await Recipe.findOne({ 'reviews._id': req.params.id, 'reviews.user': req.user._id });
     if (!recipe) return res.redirect('/recipes');
     recipe.reviews.remove(req.params.id);
     await recipe.save();
     res.redirect(`/recipes/${recipe._id}`);
-}
+  }
 
 
 
