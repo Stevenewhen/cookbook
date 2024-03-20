@@ -5,8 +5,35 @@ module.exports = {
     create,
     index,
     show,
-    delete: deleteRecipe
+    delete: deleteRecipe,
+    edit,
+    update: recipeUpdate
 };
+
+async function edit(req, res) {
+    try {
+        const recipe = await Recipe.findOne({_id: req.params.id});
+        if (!recipe) return res.redirect('/recipes');
+        res.render('recipes/edit', {recipe, errorMsg: '', title: 'Edit Recipe'});
+    } catch (err) {
+        console.error(err);
+        res.redirect('/recipes');
+    }
+}
+
+async function recipeUpdate(req, res) {
+    try {
+        const updatedRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, { new: true });
+        if (!updatedRecipe) {
+            return res.redirect('/recipes');
+        }
+        res.redirect(`/recipes/${updatedRecipe._id}`);
+    } catch (err) {
+        console.error(err);
+        res.redirect('/recipes');
+    }
+}
+
 
 async function deleteRecipe(req, res) {
     try {
@@ -14,7 +41,7 @@ async function deleteRecipe(req, res) {
         res.redirect('/recipes');
     } catch (err) {
         console.error(err);
-        res.redirect('/recipes'); // Redirect to recipe list page on error
+        res.redirect('/recipes');
     }
 }
 
@@ -54,6 +81,6 @@ async function create(req, res) {
 function newRecipe(req, res) {
     const newRecipe = new Recipe();
     console.log(newRecipe)
-    res.render('recipes/new', {errorMsg: '', title: 'Add Recipe'});
+    res.render('recipes/new', {errorMsg: '', title: 'Enter a New Recipe'});
 }
 

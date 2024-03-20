@@ -1,98 +1,112 @@
 <%- include('../partials/header') %>
 
-<section class="recipe-container">
-  <div class="container">
-    <div class="recipe-header">
-      <h2 class="recipe-name">
-        <%= recipe.name.toUpperCase() %>
-      </h2>
-      <br>
-      <div class="recipe-timings">
-        <div class="timing">
-          <label>Prep Time:  </label>
-          <p> <%= recipe.prepTime %> mins</p>
-        </div>
-        <div class="timing">
-          <label>Cook Time:  </label>
-          <p><%= recipe.cookTime %> mins</p>
-        </div>
-        <div class="timing">
-          <label>Category:  </label>
-          <p><%= recipe.category %></p>
-        </div>
-      </div>
-    </div>
-    <div class="recipe-main">
-      <div class ="column-left">
-        <div class="ingredients-container">
-          <img src="<%= recipe.image %>" alt="Recipe Image" class="recipe-image">
-          <br>
-        </div>
-        <div class="description">
-          <p>"<%= recipe.description %>"</p>
-        </div>
-      </div>
-      <div class="column-right">
-        <div class="ingredients-container">
-        <label>INGREDIENTS:</label>
-        <% const ingredients = recipe.ingredients.split(/(?=\d+)/).map(ingredient => ingredient.trim()); %>
-        <ul>
-          <% ingredients.forEach(ingredient => { %>
-            <li>
-                <input type="checkbox">
-                <%= ingredient %>
-            </li>
-          <% }); %>
-        </ul>
-      </div>
-        <div class="directions-container">
-          <label>DIRECTIONS:</label>
-          <% const directions = recipe.directions.split(/\d+\.\s/).filter(Boolean).map(step => step.trim()); %>
-          <ol>
-            <% directions.forEach(step => { %>
-              <li><%= step %></li>
-              <br>
-            <% }); %>
-          </ol>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="reviews-container">
+  <section class="recipe-container">
     <div class="container">
-      <div class="reviews-section">
-        <h3>Reviews:</h3>
-        <div class="review-form">
-          <form id="add-review-form" method="POST" action="/recipes/<%= recipe._id %>/reviews">
-            <div class="review-input">
-              <textarea name="content" placeholder="Write your review here" rows="4" cols="50"></textarea>
-            </div>
-            <button form="add-review-form" type="submit">Review</button>
-          </form> 
-        </div>
-        <br>     
-        <% recipe.reviews.forEach(function(rr) { %>
-          <div class="review-card">
-            <div class="review-user">
-              <img alt="avatar" src="<%= rr.userAvatar %>" referrerpolicy="no-referrer">
-              <span><%= rr.userName %></span>
-              <span class="review-date"><%= new Date(rr.date).toLocaleString(undefined, { month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric' }) %></span>
-            </div>
-            <div class="review-content">
-              <p><%= rr.content %></p>
-            </div>
-            <% if (user?._id.equals(rr.user)) { %>
-              <div class="review-delete">
-                <form action="/reviews/<%= rr._id %>?_method=DELETE" method="POST">
-                  <button type="submit">X</button>
-                </form>
-              </div>
-            <% } %>
+      <div class="recipe-header">
+        <h2 class="recipe-name">
+          <%= recipe.name.toUpperCase() %>
+        </h2>
+        <br>
+        <div class="recipe-timings">
+          <div class="timing">
+            <label>Prep Time: </label>
+            <p>
+              <%= recipe.prepTime %> mins
+            </p>
           </div>
-        <% }); %>
+          <div class="timing">
+            <label>Cook Time: </label>
+            <p>
+              <%= recipe.cookTime %> mins
+            </p>
+          </div>
+          <div class="timing">
+            <label>Category: </label>
+            <p>
+              <%= recipe.category %>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="recipe-main">
+        <div class="column-left">
+          <div class="ingredients-container">
+<img src="<%= recipe.image ? recipe.image : '/images/nophoto.png' %>" alt="Recipe Image" class="recipe-image">
+            <br>
+          </div>
+          <div class="description">
+            <p>"<%= recipe.description %>"</p>
+          </div>
+        </div>
+        <div class="column-right">
+          <div class="ingredients-container">
+            <label>INGREDIENTS:</label>
+            <ul>
+              <% recipe.ingredients.split(/\n/).forEach(ingredient => { %>
+                <li>
+                  <input type="checkbox">
+                  <%= ingredient.trim() %>
+                </li>
+              <% }); %>
+            </ul>            
+          </div>
+          <div class="directions-container">
+            <label>DIRECTIONS:</label>
+            <% const directions=recipe.directions.split(/\d+\.\s/).filter(Boolean).map(step=> step.trim()); %>
+              <ol>
+                <% directions.forEach(step=> { %>
+                  <li>
+                    <%= step %>
+                  </li>
+                  <br>
+                  <% }); %>
+              </ol>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</section>
+    <div class="reviews-container">
+      <div class="container">
+        <div class="reviews-section">
+          <h3>Reviews:</h3>
+          <div class="review-form">
+            <form id="add-review-form" method="POST" action="/recipes/<%= recipe._id %>/reviews">
+              <div class="review-input">
+                <textarea name="content" placeholder="Write your review here" rows="4" cols="50"></textarea>
+              </div>
+              <button form="add-review-form" type="submit">Review</button>
+            </form>
+          </div>
+          <br>
+          <% recipe.reviews.forEach(function(rr) { %>
+            <div class="review-card">
+              <div class="review-user">
+                <img alt="avatar" src="<%= rr.userAvatar %>" referrerpolicy="no-referrer">
+                <span>
+                  <%= rr.userName %>
+                </span>
+                <span class="review-date">
+                  <%= new Date(rr.date).toLocaleString(undefined, { month: 'short' , day: 'numeric' , hour: 'numeric' ,
+                    minute: 'numeric' }) %>
+                </span>
+              </div>
+              <div class="review-content">
+                <p>
+                  <%= rr.content %>
+                </p>
+              </div>
+              <% if (user?._id.equals(rr.user)) { %>
+                <div class="review-delete">
+                  <form action="/reviews/<%= rr._id %>?_method=DELETE" method="POST">
+                    <button type="submit">X</button>
+                  </form>
+                </div>
+                <% } %>
+            </div>
+            <% }); %>
+        </div>
+      </div>
+    </div>
+  </section>
 
-<%- include('../partials/footer') %>
+  <%- include('../partials/footer') %>

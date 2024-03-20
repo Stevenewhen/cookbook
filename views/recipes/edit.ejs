@@ -1,0 +1,72 @@
+<%- include('../partials/header') %>
+
+<section class="recipe-container">
+  <div class="container">
+    <div class="recipe-header">
+      <h2>Edit Recipe</h2>
+    </div>
+    <form id="edit-recipe-form" method="POST" action="/recipes/<%= recipe._id %>?_method=PUT">
+    <div class="recipe-header">
+        <input class="recipe-name" type="text" id="recipe-name" name="name" value="<%= recipe.name %>" style="width: 100%; font-size: 24px; line-height: 1.2;">
+    </div>
+    <div class="recipe-timings">
+        <div class="timing">
+            <label>Prep Time: </label>
+            <input type="number" id="recipe-prep-time" name="prepTime" value="<%= recipe.prepTime %>">
+        </div>
+        <div class="timing">
+            <label>Cook Time: </label>
+            <input type="number" id="recipe-cook-time" name="cookTime" value="<%= recipe.cookTime %>">
+        </div>
+        <div class="timing">
+            <label>Category: </label>
+            <select id="recipe-category" name="category">
+                <option value="" disabled selected>Select category</option>
+                <option value="American">American</option>
+                <option value="Chinese">Chinese</option>
+                <option value="French">French</option>
+                <option value="Greek">German</option>
+                <option value="Greek">Greek</option>
+                <option value="Indian">Indian</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Korean">Korean</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Spanish">Spanish</option>
+                <option value="Thai">Thai</option>
+                <option value="Vietnamese">Vietnamese</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="recipe-main">
+      <div class="column-left">
+        <br>
+        <img src="<%= recipe.image ? recipe.image : '/images/nophoto.png' %>" alt="Recipe Image" class="recipe-image">  
+        <div class="ingredients-container">   
+            <label>Description:</label>
+            <textarea id="recipe-description" name="description" placeholder="">"<%= recipe.description %>"</textarea>
+        </div>
+          <div class="ingredients-container">
+            <label for="recipe-image">Image (URL):</label>
+            <input type="text" id="recipe-image" name="image" value="<%= recipe.image %>" placeholder="link to image">
+          </div>
+          <button form="edit-recipe-form" type="submit">Save Changes</button>
+ 
+      </div>
+      <div class="column-right">
+        <div class="ingredients-container">
+          <label>INGREDIENTS:</label>
+          <textarea id="recipe-ingredients" name="ingredients"><%= recipe.ingredients %></textarea>
+        </div>
+        <div class="directions-container">
+          <label>DIRECTIONS:</label>
+          <textarea id="recipe-directions" name="directions"><%= recipe.directions %></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+</section>
+
+<%- include('../partials/footer') %>

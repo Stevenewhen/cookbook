@@ -49,7 +49,7 @@ const recipeSchema = new Schema({
     category: {
         type: String,
         required: true,
-        enum: ['American', 'Chinese', 'French', 'German', 'Greek', 'Indian', 'Italian', 'Japanese', 'Mexican', 'Spanish', 'Thai', 'Vietnamese']
+        enum: ['American', 'Chinese', 'French', 'German', 'Greek', 'Indian', 'Italian', 'Japanese', 'Korean', 'Mexican', 'Spanish', 'Thai', 'Vietnamese']
     },
     description: {
         type: String,

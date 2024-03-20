@@ -30,45 +30,66 @@ nav ul li a {
   color: white;
   padding: 5px 10px;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
   color: #f6b831;
+  cursor: pointer;
 }
 
 nav ul li a:hover {
   background-color: #f0f0f0;
   color: black;
+  cursor: pointer;
 }
 
 tr {
   text-align: center;
+  border-bottom: 2px solid #f6b831
 }
 
-tr:nth-child(even){
+tr:hover {
   background-color: #f0f0f0;
+  border-bottom: 2px solid #b35d00;
+  cursor: pointer;
 }
-
 
 table {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
   border-collapse: collapse;
+  display: inline;
 }
 
 th {
   background-color: #f6b831;
   color: white;
   padding: 10px;
-  border: 1px solid #ccc;
 }
+
+th img,
+td img {
+  opacity: 0.5;
+}
+
+th img:hover,
+td img:hover {
+  opacity: 1.0;
+}
+
+
 
 td {
   padding: 10px;
-  border: 1px solid #ccc;
-  width: calc(100% / 3);
+  width: calc(100% / 4);
+}
+
+li:hover {
+  background-color: #b35d00;
+  color: white;
 }
 
 .logo img {
@@ -86,6 +107,7 @@ td {
 }
 
 .recipe-name {
+  font-size: 24;
   margin: 0;
   padding: 0;
   text-align: center;
@@ -175,12 +197,20 @@ td {
     margin: 20px 0;
   }
 }
+.recipe-image {
+  max-width: 390px;
+  max-height: 585px;
+}
 
 @media (max-width: 767px) {
   .ingredients-container img,
   .recipe-image {
     max-width: 50%;
   }
+}
+
+#recipe-description {
+  text-align: center;
 }
 
 .container {
@@ -231,9 +261,7 @@ button {
   cursor: pointer;
 }
 
-button:hover {
-  background-color: #b35d00;
-}
+
 .reviews-section {
   align-items: center;
   text-align: center;
@@ -283,7 +311,6 @@ button:hover {
   right: 0;
   font-size: 14px;
   color: #888;
-  cursor: pointer;
   align-items: center;
 }
 .review-input {
@@ -303,3 +330,22 @@ button:hover {
   position: absolute;
   bottom: 2px;
 }
+
+.custom-button {
+  padding: 1px;
+  display: inline;
+  vertical-align: middle;
+  margin: 0 2px;
+}
+
+.action-cell {
+  text-align: center;
+  background-color: #f6b831;
+}
+
+.cropped-ofp {
+  width: 150px; 
+  height: 150px; 
+  object-fit: cover;
+  object-position: 25% 25%; 
+  }

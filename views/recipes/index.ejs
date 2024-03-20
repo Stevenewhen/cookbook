@@ -5,30 +5,39 @@
     <table>
         <thead>
             <tr>
+                <th></th>
                 <th>Name</th>
-    
                 <th>Description</th>
                 <th>Total Cook Time</th>
+                <th><a href="/recipes/new"><img src="/images/chef-hat.png"></a></th>
             </tr>
         </thead>
         <tbody>
             <% recipes.forEach(function(r) { %>
-                    <tr>
-                        <td><a href="/recipes/<%= r._id %>"><%= r.name %></a></td>
-                        <td><%= r.description %></td>
-                        <% let totalCookTime = r.prepTime + r.cookTime %>
-                        <td><%= totalCookTime %> mins</td>
-                        <td class="delete-cell">
-                            <% if (user?._id.equals(r.user)) { %>
-                                <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST" class="delete-form">
-                                    <button type="submit"><img src="/images/trash-can.png" alt=""></button>
-                                </form>
-                            <% } %>
-                        </td>
-                    </tr>
-                <% }) %>
-            </tbody>
-        </table>
-    </div>
-    
-    <%- include('../partials/footer') %>
+                <tr onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row">
+                    <td><img src="<%= r.image%>" class="cropped-ofp"></td>
+                    <td><%= r.name %></td>
+                    <td><%= r.description %></td>
+                    <% let totalCookTime = r.prepTime + r.cookTime %>
+                    <td><%= totalCookTime %> mins</td>
+                    <td class="action-cell">
+                        <% if (user?._id.equals(r.user)) { %>
+                            <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST" class="delete-form">
+                                <button type="submit" class="delete-button custom-button">
+                                    <img src="/images/trash-can.png" alt="Delete Recipe">
+                                </button>
+                            </form>
+                            <form action="/recipes/<%= r._id %>/edit" method="GET" class="edit-form">
+                                <button type="submit" class="edit-button custom-button">
+                                    <img src="/images/pencil-icon.png" alt="Edit Recipe">
+                                </button>
+                            </form>
+                        <% } %>                        
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</div>
+
+<%- include('../partials/footer') %>

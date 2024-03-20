@@ -2,8 +2,9 @@ const Recipe = require('../models/recipe');
 
 module.exports = {
     create,
-    delete: deleteReview
+    delete: deleteReview,
 }
+
 
 async function deleteReview(req, res) {
     const recipe = await Recipe.findOne({ 'reviews._id': req.params.id, 'reviews.user': req.user._id });
