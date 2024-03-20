@@ -1,14 +1,20 @@
 const Recipe = require('../models/recipe');
 
 module.exports = {
+    myCookbook,
     new: newRecipe,
     create,
     index,
     show,
     delete: deleteRecipe,
     edit,
-    update: recipeUpdate
+    update: recipeUpdate,
 };
+
+function myCookbook(req, res) {
+    res.render('/mycookbook', { errorMsg: '', title: 'myCookbook' });
+}
+
 
 async function edit(req, res) {
     try {
@@ -55,6 +61,7 @@ async function show(req, res) {
         console.error(err);
     }
 }
+
 
 async function index(req, res) {
     const recipes = await Recipe.find({})

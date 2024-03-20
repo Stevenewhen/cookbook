@@ -19,15 +19,17 @@
   </header>
   <nav>
     <ul>
-      <li><a href="/recipes" <%- title === 'All Recipes' ? 'class="active"' : '' %>>Recipe List</a></li>
+      <li><a href="/recipes" <%= title === 'All Recipes' ? 'class="active"' : '' %>>Recipe List</a></li>
       <% if (user) { %>
-        <li><a href="/recipes/new" <%- title === 'Add Recipe' ? 'class="active"' : '' %>>Add Recipe</a></li>
+        <li><a href="/recipes/new" <%= title === 'Add Recipe' ? 'class="active"' : '' %>>Add Recipe</a></li>
+        <li><a href="recipes/mycookbook" <%= title === 'myCookbook' ? 'class="active"' : '' %>>myCookbook</a></li>
         <li><a href="/logout">Logout</a></li>
       <% } else { %>
         <li><a href="/auth/google" class="login">Sign In</a></li>
       <% } %>
     </ul>
   </nav>
+  
 </body>
 </html>
 

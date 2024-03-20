@@ -42,7 +42,7 @@
     <div class="recipe-main">
       <div class="column-left">
         <br>
-        <img src="<%= recipe.image ? recipe.image : '/images/nophoto.png' %>" alt="Recipe Image" class="recipe-image">  
+        <img src="<%= recipe.image ? recipe.image : '/images/nophoto.png' %>" class="cropped-show-image">  
         <div class="ingredients-container">   
             <label>Description:</label>
             <textarea id="recipe-description" name="description" placeholder="">"<%= recipe.description %>"</textarea>
@@ -51,17 +51,17 @@
             <label for="recipe-image">Image (URL):</label>
             <input type="text" id="recipe-image" name="image" value="<%= recipe.image %>" placeholder="link to image">
           </div>
-          <button form="edit-recipe-form" type="submit">Save Changes</button>
- 
+          <button form="edit-recipe-form" type="submit" class="btnhover">Save Changes</button>
+          <button type="button" id="reset-button" class="btnhover">Reset Changes</button>
       </div>
       <div class="column-right">
         <div class="ingredients-container">
           <label>INGREDIENTS:</label>
-          <textarea id="recipe-ingredients" name="ingredients"><%= recipe.ingredients %></textarea>
+          <textarea id="recipe-ingredients" name="ingredients" rows="15"><%= recipe.ingredients %></textarea>
         </div>
         <div class="directions-container">
           <label>DIRECTIONS:</label>
-          <textarea id="recipe-directions" name="directions"><%= recipe.directions %></textarea>
+          <textarea id="recipe-directions" name="directions" rows="21"><%= recipe.directions %></textarea>
         </div>
       </div>
     </div>
@@ -70,3 +70,12 @@
 </section>
 
 <%- include('../partials/footer') %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    function resetChanges() {
+      window.location.reload();
+    }
+    document.getElementById("reset-button").addEventListener("click", resetChanges);
+  });
+</script>

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var recipesCtrl = require('../controllers/recipes');
+var myCookbookCtrl = require('../controllers/mycookbook')
 var ensureLoggedIn = require('../config/ensureLoggedIn')
 
 /* GET users listing. */
@@ -8,6 +9,9 @@ var ensureLoggedIn = require('../config/ensureLoggedIn')
 //   res.send('respond with a resource');
 // });
 
+
+
+router.get('/mycookbook', ensureLoggedIn, myCookbookCtrl.myCookbook);
 
 
 // Get /recipes
