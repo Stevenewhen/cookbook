@@ -1,8 +1,19 @@
 const express = require('express');
 const router = express.Router();
-const myCookbookCtrl = require('../controllers/myCookbook');
-const ensureLoggedIn = require('../config/ensureLoggedIn');
+const myCookbookCtrl = require('../controllers/mycookbook');
 
-router.get('/', ensureLoggedIn, myCookbookCtrl.myCookbook);
+
+
+router.post('/', myCookbookCtrl.add);
+
+
+router.get('/', myCookbookCtrl.getAll);
+
+
+router.get('/index', myCookbookCtrl.index);
+
+
+router.delete('/:id', myCookbookCtrl.delete);
+
 
 module.exports = router;

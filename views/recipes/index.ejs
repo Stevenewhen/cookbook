@@ -16,7 +16,8 @@
             <tbody>
                 <% recipes.forEach(function(r) { %>
                     <tr onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row">
-                        <td><img src="<%= r.image%>" class="cropped-ofp"></td>
+                        <td>   <img src="<%= r.image ? r.image : '/images/nophoto.png' %>" alt="Recipe Image" class="cropped-ofp"></td>
+                     
                         <td><%= r.name %></td>
                         <td><%= r.description %></td>
                         <% let totalCookTime = r.prepTime + r.cookTime %>
@@ -36,7 +37,7 @@
                             <% } %>                        
                         </td>
                     </tr>
-                <% }) %>
+                <% }); %>
             </tbody>
         </table>
     </div>

@@ -1,0 +1,53 @@
+<%- include('../partials/header') %>
+
+<div class="container">
+    <h2><%= user.name %> myCookbook</h2>
+    <div class="table-container">
+
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let previousMonthYear = null; %>
+                <% for (let i = mycookbook.length - 1; i >= 0; i--) { %>
+                    <% const recipeItem = mycookbook[i]; %>
+                    <% const currentMonthYear = new Date(recipeItem.createdAt).toLocaleString('en-US', { month: 'long', year: 'numeric' }); %>
+                    <% if (currentMonthYear !== previousMonthYear) { %>
+                        <tr>
+                            <td colspan="5">
+                                <div><strong><%= currentMonthYear.toLowerCase() %></strong></div>
+                            </td>
+                        </tr>
+                        <% previousMonthYear = currentMonthYear; %>
+                    <% } %>
+                    <% if (recipeItem.recipe) { %>
+                        <tr onclick="window.location='/recipes/<%= recipeItem.recipe._id %>';" class="clickable-row">
+                            <td>
+                                <div class="date-square">
+                                    <%= new Date(recipeItem.createdAt).getDate() %>
+                                </div>
+                            </td>
+                            <td><%= recipeItem.name %></td>
+                            <td><%= recipeItem.description %></td>
+                            <td><img src="<%= recipeItem.image ? recipeItem.image : '/images/nophoto.png' %>" alt="Recipe Image" class="cropped-ofp"></td>
+                            <td>
+                                <form action="/mycookbook/<%= recipeItem._id %>?_method=DELETE" method="POST">
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% } %>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include('../partials/footer') %>

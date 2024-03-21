@@ -68,15 +68,15 @@
         <div class="recipe-nav-options">
           <% if (user?._id.equals(recipe.user)) { %>
           <a href="<%= recipe._id %>/edit">
-            <button type="button"><img src="/images/pencil-icon.png"> Edit</button>
+            <button type="button"> Edit</button>
           </a>
           <a href="<%= recipe._id %>/delete">
-            <button type="button"><img src="/images/pencil-icon.png"> Delete</button>
+            <button type="button">Delete</button>
           </a>
-         
-          <a href="<%= recipe._id %>/add-to-my-recipe">
-            <button type="button"><img src="/images/pencil-icon.png"> Add to MyRecipe</button>
-          </a>
+          <form action="/mycookbook" method="POST">
+            <input type="hidden" name="recipeId" value="<%= recipe._id %>">
+            <button type="submit">Add to My Cookbook</button>
+          </form>        
           <% } %>
           <button onclick="showComments()">Comments</button>
         </div>
