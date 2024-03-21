@@ -1,7 +1,13 @@
 <%- include('../partials/header') %>
 
+
 <div class="container">
-    <h2><%= user.name %> myCookbook</h2>
+    <div class="page-title-container">
+        <div class="page-title-user"><strong><%= user.name.split(' ')[0] %>'s</strong></div>
+        <div class="page-title">myCookbook
+        </div>
+    </div>
+
     <div class="table-container">
 
         <table>

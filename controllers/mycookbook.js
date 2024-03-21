@@ -5,7 +5,7 @@ module.exports = {
     add: addItemToMyCookbook,
     getAll: getAllMyCookbookItems,
     delete: deleteMyCookbookItem,
-    index,
+    // index,
 };
 
 
@@ -28,24 +28,27 @@ async function addItemToMyCookbook(req, res) {
 }
 
 
-async function index(req, res) {
-    req.body.user = req.user._id;
-    req.body.userName = req.user.name;
-    req.body.userAvatar = req.user.avatar;
-    try {
-        const items = await MyCookbookItem.find();
-        const user = req.user;
-        res.render('mycookbook/index', { mycookbook: items, title: 'myCookbook'});
-    } catch (error) {
-        console.error(error);
-    }
-}
+// async function index(req, res) {
+//     req.body.user = req.user._id;
+//     req.body.userName = req.user.name;
+//     req.body.userAvatar = req.user.avatar;
+//     try {
+//         const items = await MyCookbookItem.find();
+//         const user = req.user;
+//         console.log(items)
+//         res.render('mycookbook/index', { mycookbook: items, title: 'myCookbook'});
+//     } catch (error) {
+//         console.error(error);
+//     }
+// }
 
 
 
 async function getAllMyCookbookItems(req, res) {
+    console.log("My name is", req.user.name)
     try {
-        const items = await MyCookbookItem.find();
+        const user = req.user;
+        const items = await MyCookbookItem.find().populate('user')
         res.render('mycookbook/index', { mycookbook: items, title: 'MyCookbook' });
     } catch (error) {
         console.error(error);

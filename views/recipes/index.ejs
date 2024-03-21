@@ -1,7 +1,14 @@
 <%- include('../partials/header') %>
 
 <div class="container">
-    <h2>Recipe List</h2>
+    <% if (user) { %>
+        <div class="page-title-container">
+            <div class="page-title-user"><strong><%= user.name.split(' ')[0] %>'s</strong></div>
+            <div class="page-title">RECIPE LIST</div>
+        </div>
+    <% } else { %>
+        <div class="page-title">RECIPE LIST</div>
+    <% } %>
     <div class="table-container">
         <table>
             <thead>
@@ -25,6 +32,7 @@
                         <td class="action-cell">
                             <% if (user?._id.equals(r.user)) { %>
                                 <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST" class="delete-form">
+                                    <input type="checkbox" class="recipe-checkbox" name="selectedRecipe" value="<%= r._id %>" required>
                                     <button type="submit" class="delete-button custom-button">
                                         <img src="/images/trash-can.png" alt="Delete Recipe">
                                     </button>
@@ -36,6 +44,7 @@
                                 </form>
                             <% } %>                        
                         </td>
+                        
                     </tr>
                 <% }); %>
             </tbody>

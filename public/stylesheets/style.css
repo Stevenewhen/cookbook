@@ -11,11 +11,16 @@ body {
 nav {
   background-color: #f6b831;
   text-align: center;
+  margin: 0;
+}
+h2 {
+  margin: 0;
 }
 
 nav ul {
   list-style-type: none;
   padding: 0;
+  margin: 0;
   display: flex;
   justify-content: flex-end;
 }
@@ -67,12 +72,12 @@ table {
 th {
   background-color: #f6b831;
   color: white;
-  padding: 10px;
+  padding: 0px;
 }
 
 
 td {
-  padding: 10px;
+  padding: 0px;
   width: calc(100% / 4);
 }
 
@@ -201,10 +206,14 @@ li:hover {
   }
 
   .container {
-    width: 100%;
-    max-width: none;
-    padding: 0 20px;
-    box-sizing: border-box;
+    .container {
+      overflow-x: auto;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0;
+      align-items: center;
+    }
+    
   }
   .review-form {
     max-width: 100%;
@@ -432,5 +441,29 @@ button {
 .recipe-nav-options button:hover {
   border: 1px dotted white;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Coiny&display=swap');
+.page-title-container {
+  display: flex-box;
+  align-items: center; 
+}
+
+.page-title-user {
+  color: #b35d00;
+  margin: -5px; 
+  margin-bottom: 0px;
+}
+
+.page-title {
+  font-family: "Coiny", system-ui;
+  font-weight: 900;
+  font-style: normal;
+  font-size: 24px;
+  color: #f6b831;
+  margin: -2px;
+  margin-left: -20px;
+}
+
+
 
 
