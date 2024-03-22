@@ -22,32 +22,32 @@
             </thead>
             <tbody>
                 <% recipes.forEach(function(r) { %>
-                    <tr onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row">
-                        <td>   <img src="<%= r.image ? r.image : '/images/nophoto.png' %>" alt="Recipe Image" class="cropped-ofp"></td>
-                     
-                        <td><%= r.name %></td>
-                        <td><%= r.description %></td>
+                    <tr>
+                        <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row">
+                            <img src="<%= r.image ? r.image : '/images/nophoto.png' %>" alt="Recipe Image" class="cropped-ofp">
+                        </td>
+                        <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row"><%= r.name %></td>
+                        <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row"><%= r.description %></td>
                         <% let totalCookTime = r.prepTime + r.cookTime %>
-                        <td><%= totalCookTime %> mins</td>
+                        <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row"><%= totalCookTime %> mins</td>
                         <td class="action-cell">
                             <% if (user?._id.equals(r.user)) { %>
-                                <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST" class="delete-form">
-                                    <input type="checkbox" class="recipe-checkbox" name="selectedRecipe" value="<%= r._id %>" required>
+                                <form action="/recipes/<%= r._id %>?_method=DELETE" method="POST" class="delete-form" onclick="event.stopPropagation();">
                                     <button type="submit" class="delete-button custom-button">
                                         <img src="/images/trash-can.png" alt="Delete Recipe">
                                     </button>
                                 </form>
-                                <form action="/recipes/<%= r._id %>/edit" method="GET" class="edit-form">
+                                <form action="/recipes/<%= r._id %>/edit" method="GET" class="edit-form" onclick="event.stopPropagation();">
                                     <button type="submit" class="edit-button custom-button">
                                         <img src="/images/pencil-icon.png" alt="Edit Recipe">
                                     </button>
                                 </form>
                             <% } %>                        
                         </td>
-                        
                     </tr>
                 <% }); %>
             </tbody>
+            
         </table>
     </div>
 </div>
