@@ -39,4 +39,4 @@ That means Grandma will no longer have to keep that rolodex she tries to take a 
 # Next Steps
 - Sorting buttons for alphabetical A-Z or Z-A
 - Improve myCookbook navigation.
-
+- Improve format for adding and editing recipe.
