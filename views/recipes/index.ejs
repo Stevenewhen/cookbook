@@ -21,14 +21,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <div class="img-poster">
-                        <% recipes.forEach(function(r) { %>
-                            <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row">
+                <% recipes.forEach(function(r) { %>
+                    <tr>
+                        <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row">
+                            <div class="img-poster">
                                 <img src="<%= r.image ? r.image : '/images/nophoto.png' %>" alt="Recipe Image" class="cropped-ofp">
                                 <br>
-                                <span class="post">Posted By:</span><span class="img-poster"> <%= r.user.name.toUpperCase() %></span>
-                        </div>
+                                <span class="post">Posted By:</span>
+                                <span class="img-poster"><%= r.user.name.toUpperCase() %></span>
+                            </div>
                         </td>
                         <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row"><%= r.name %></td>
                         <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row"><%= r.description %></td>
@@ -46,12 +47,11 @@
                                         <img src="/images/pencil-icon.png" alt="Edit Recipe">
                                     </button>
                                 </form>
-                            <% } %>                        
+                            <% } %>
                         </td>
                     </tr>
                 <% }); %>
             </tbody>
-            
         </table>
     </div>
 </div>
