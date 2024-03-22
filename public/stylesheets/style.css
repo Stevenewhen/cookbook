@@ -485,9 +485,8 @@ button {
   .header-content {
     padding: 10px;
   }
-  .logo img {
-    max-width: 150px;
-  }
+
+
   nav ul {
     display: flex;
     justify-content: space-around;
@@ -497,7 +496,8 @@ button {
   }
   nav ul li {
     flex: 1; 
-    font-size: 12px;
+    font-size: 10px;
+    font-weight: bold;
     text-align: center;
   }
   nav ul li a {
@@ -552,6 +552,8 @@ button {
   
   .recipe-nav-bar {
     justify-content: center;
+    max-width: 390px;
+
   }
   
   .recipe-nav-options button {
@@ -561,8 +563,20 @@ button {
   textarea {
     max-width: 350px;
   }
+
+  button {
+    padding: 5px;
+  }
+
+  th {
+    font-size: 10px;
+  }
 }
 
+.img-poster {
+font-family: "Coiny", system-ui;;
+font-size: 12px;
+}
 
 
 
