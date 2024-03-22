@@ -30,7 +30,7 @@ That means Grandma will no longer have to keep that rolodex she tries to take a 
   ![Mongoose ODM](https://img.shields.io/badge/-Mongoose_ODM-05122A?style=flat&logo=mongodb)
   ![Markdown](https://img.shields.io/badge/-Markdown-05122A?style=flat&logo=markdown)
 
-$ Geetting Started
+# Geting Started
 (https://cookami-a5c3eedc9c25.herokuapp.com/recipes)
 
 # Project Planning
