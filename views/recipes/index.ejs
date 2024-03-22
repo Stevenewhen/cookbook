@@ -27,7 +27,7 @@
                             <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row">
                                 <img src="<%= r.image ? r.image : '/images/nophoto.png' %>" alt="Recipe Image" class="cropped-ofp">
                                 <br>
-                                <span>Posted By: <%= r.user.name %></span>
+                                <span class="post">Posted By:</span><span class="img-poster"> <%= r.user.name.toUpperCase() %></span>
                         </div>
                         </td>
                         <td onclick="window.location='/recipes/<%= r._id %>';" class="clickable-row"><%= r.name %></td>

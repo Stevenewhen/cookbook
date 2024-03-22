@@ -55,7 +55,7 @@ async function show(req, res) {
 }
 
 async function index(req, res) {
-    const recipes = await Recipe.find({})
+    const recipes = await Recipe.find({}).populate('user')
     res.render('recipes/index', { 
         recipes,
         title: 'Recipe List' })
